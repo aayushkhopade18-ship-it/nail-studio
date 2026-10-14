@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Nails & Academy | Luxury Nail Artistry</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nude: {
+                            50: '#FDFBF7',
+                            100: '#F7F2EC',
+                            200: '#EFE6DC',
+                            300: '#E2D1C3',
+                            400: '#D1B9A5',
+                        },
+                        blush: {
+                            50: '#FDF7F7',
+                            100: '#FAECEB',
+                            200: '#F5D5D3',
+                            300: '#EBB4B1',
+                            400: '#DE8E8A',
+                        },
+                        rose: {
+                            gold: '#B76E79',
+                            goldLight: '#E8C5C8',
+                            goldDark: '#8A4E56'
+                        },
+                        charcoal: '#1A1818',
+                        muted: '#635E59'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #D1B9A5;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-nude-50 text-charcoal font-sans antialiased selection:bg-rose-goldLight selection:text-charcoal custom-scroll">
+
+    <!-- Top Demo Banner (Explains it's fully customizable) -->
+    <div class="bg-charcoal text-nude-100 py-2 px-4 text-xs tracking-wider flex items-center justify-between border-b border-rose-gold/30">
+        <div class="flex items-center gap-2 mx-auto">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span><strong>Live Preview Layout:</strong> All branding, colors, services, and prices can be personalized.</span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-nude-50/90 backdrop-blur-md border-b border-nude-200 transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex flex-col">
+                <span class="font-serif text-2xl tracking-[0.25em] font-light uppercase text-charcoal">Atelier Nails</span>
+                <span class="text-[9px] tracking-[0.35em] text-rose-gold uppercase -mt-1 font-medium">& Academy</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs tracking-widest uppercase font-medium text-muted">
+                <a href="#services" class="hover:text-rose-gold transition-colors">Services & Menu</a>
+                <a href="#gallery" class="hover:text-rose-gold transition-colors">Art Gallery</a>
+                <a href="#academy" class="hover:text-rose-gold transition-colors">Nail Academy</a>
+                <a href="#reviews" class="hover:text-rose-gold transition-colors">Client Love</a>
+                <a href="#contact" class="hover:text-rose-gold transition-colors">Find Studio</a>
+            </nav>
+
+            <!-- Book Now Action -->
+            <div class="flex items-center gap-4">
+                <button onclick="openBookingModal('General Appointment')" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-charcoal text-white hover:bg-rose-gold text-xs tracking-widest uppercase transition-all duration-300 shadow-sm">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span>Reserve Slot</span>
+                </button>
+                <button id="mobileMenuBtn" class="md:hidden text-charcoal text-lg p-2" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-nude-50 border-b border-nude-200 px-6 py-6 transition-all">
+            <div class="flex flex-col gap-4 text-xs tracking-widest uppercase text-muted">
+                <a href="#services" onclick="toggleMobileMenu()" class="hover:text-rose-gold py-1">Services & Menu</a>
+                <a href="#gallery" onclick="toggleMobileMenu()" class="hover:text-rose-gold py-1">Art Gallery</a>
+                <a href="#academy" onclick="toggleMobileMenu()" class="hover:text-rose-gold py-1">Nail Academy</a>
+                <a href="#reviews" onclick="toggleMobileMenu()" class="hover:text-rose-gold py-1">Reviews</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-rose-gold py-1">Contact & Directions</a>
+                <button onclick="openBookingModal('General Appointment'); toggleMobileMenu()" class="w-full mt-2 py-3 rounded-full bg-charcoal text-white text-xs tracking-widest uppercase">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-16 px-6">
+        <!-- Subtle Background Glows -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blush-200/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-nude-300/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10 space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nude-100 border border-nude-200 text-rose-goldDark text-[11px] tracking-widest uppercase font-medium">
+                <i class="fa-solid fa-gem text-rose-gold"></i>
+                Bespoke Nail Artistry & Professional Masterclasses
+            </div>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-light tracking-tight text-charcoal leading-tight">
+                Flawless Nails Crafted with <br class="hidden sm:inline"/>
+                <span class="italic font-normal text-rose-gold">Uncompromising Precision.</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-muted text-sm sm:text-base leading-relaxed font-light">
+                Indulge in meticulous Russian manicures, couture bridal nail designs, and sculpted gel extensions in a serene luxury studio. Elevate your craft with our master certifications.
+            </p>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openBookingModal('Custom Nail Service')" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-rose-gold text-white hover:bg-rose-goldDark text-xs tracking-widest uppercase font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    Book On WhatsApp
+                </button>
+                <a href="#services" class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-charcoal/20 hover:border-charcoal text-charcoal text-xs tracking-widest uppercase font-medium transition-all flex items-center justify-center gap-2">
+                    <span>Explore Treatment Menu</span>
+                    <i class="fa-solid fa-arrow-down text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Highlights Pill -->
+            <div class="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-nude-200/80">
+                <div class="text-center p-2">
+                    <p class="font-serif text-2xl text-charcoal font-normal">100%</p>
+                    <p class="text-[10px] tracking-wider text-muted uppercase">Medical Grade Hygiene</p>
+                </div>
+                <div class="text-center p-2">
+                    <p class="font-serif text-2xl text-charcoal font-normal">Premium</p>
+                    <p class="text-[10px] tracking-wider text-muted uppercase">Imported Gel Formulas</p>
+                </div>
+                <div class="text-center p-2">
+                    <p class="font-serif text-2xl text-charcoal font-normal">Certified</p>
+                    <p class="text-[10px] tracking-wider text-muted uppercase">Master Technicians</p>
+                </div>
+                <div class="text-center p-2">
+                    <p class="font-serif text-2xl text-charcoal font-normal">4.9 ★</p>
+                    <p class="text-[10px] tracking-wider text-muted uppercase">Rated by 500+ Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing Menu -->
+    <section id="services" class="py-20 bg-white border-y border-nude-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-[11px] tracking-[0.3em] uppercase text-rose-gold font-medium">Bespoke Offerings</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-charcoal font-light mt-1">Curated Treatment Menu</h2>
+                <div class="w-12 h-0.5 bg-rose-gold/40 mx-auto mt-3"></div>
+                <p class="text-xs sm:text-sm text-muted mt-3 font-light">Every treatment is customized with tailored nail prep, cuticle restoration, and enduring finishes.</p>
+            </div>
+
+            <!-- Service Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-nude-50 p-7 rounded-2xl border border-nude-200 flex flex-col justify-between hover:border-rose-goldLight transition-all group">
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-nude-200 pb-3">
+                            <h3 class="font-serif text-xl text-charcoal font-medium group-hover:text-rose-gold transition-colors">Russian E-File Dry Manicure</h3>
+                            <span class="text-sm font-semibold text-rose-gold">₹1,200</span>
+                        </div>
+                        <p class="text-xs text-muted mt-3 leading-relaxed font-light">
+                            Signature diamond drill cuticle refinement followed by therapeutic strengthening base coats and deep hydration oil treatment.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4 text-[10px] text-muted">
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">60 mins</span>
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">Clean Finish</span>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('Russian E-File Dry Manicure')" class="mt-6 w-full py-2.5 rounded-lg border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-white text-[11px] tracking-widest uppercase transition-all">
+                        Book Treatment
+                    </button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-nude-50 p-7 rounded-2xl border border-rose-gold/40 flex flex-col justify-between relative group shadow-sm">
+                    <span class="absolute -top-3 right-5 bg-rose-gold text-white text-[9px] uppercase tracking-widest px-3 py-1 rounded-full font-medium">Most Loved</span>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-nude-200 pb-3">
+                            <h3 class="font-serif text-xl text-charcoal font-medium group-hover:text-rose-gold transition-colors">Sculpted Gel Extensions</h3>
+                            <span class="text-sm font-semibold text-rose-gold">₹2,400</span>
+                        </div>
+                        <p class="text-xs text-muted mt-3 leading-relaxed font-light">
+                            Sculpted using premium builder gel or dual forms for seamless natural looks, tailored nail architecture, and zero nail bed damage.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4 text-[10px] text-muted">
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">90 mins</span>
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">Includes Solid Gel</span>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('Sculpted Gel Extensions')" class="mt-6 w-full py-2.5 rounded-lg bg-charcoal text-white hover:bg-rose-gold text-[11px] tracking-widest uppercase transition-all">
+                        Book Treatment
+                    </button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-nude-50 p-7 rounded-2xl border border-nude-200 flex flex-col justify-between hover:border-rose-goldLight transition-all group">
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-nude-200 pb-3">
+                            <h3 class="font-serif text-xl text-charcoal font-medium group-hover:text-rose-gold transition-colors">Haute Bridal Nail Suite</h3>
+                            <span class="text-sm font-semibold text-rose-gold">₹3,800+</span>
+                        </div>
+                        <p class="text-xs text-muted mt-3 leading-relaxed font-light">
+                            Custom bridal consultations, Swarovski crystals, 3D hand-painted motifs, and mirror chrome textures designed to complement bridal lehengas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4 text-[10px] text-muted">
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">120 mins</span>
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">Custom Consultation</span>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('Haute Bridal Nail Suite')" class="mt-6 w-full py-2.5 rounded-lg border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-white text-[11px] tracking-widest uppercase transition-all">
+                        Book Treatment
+                    </button>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-nude-50 p-7 rounded-2xl border border-nude-200 flex flex-col justify-between hover:border-rose-goldLight transition-all group">
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-nude-200 pb-3">
+                            <h3 class="font-serif text-xl text-charcoal font-medium group-hover:text-rose-gold transition-colors">Chrome & Glazed Donut Finish</h3>
+                            <span class="text-sm font-semibold text-rose-gold">₹1,800</span>
+                        </div>
+                        <p class="text-xs text-muted mt-3 leading-relaxed font-light">
+                            Trending reflective chrome powders layered over sheer milky and nude bases for an ethereal, glass-like shine.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4 text-[10px] text-muted">
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">75 mins</span>
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">Trending</span>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('Chrome & Glazed Finish')" class="mt-6 w-full py-2.5 rounded-lg border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-white text-[11px] tracking-widest uppercase transition-all">
+                        Book Treatment
+                    </button>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-nude-50 p-7 rounded-2xl border border-nude-200 flex flex-col justify-between hover:border-rose-goldLight transition-all group">
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-nude-200 pb-3">
+                            <h3 class="font-serif text-xl text-charcoal font-medium group-hover:text-rose-gold transition-colors">Nail Art Add-ons & Charms</h3>
+                            <span class="text-sm font-semibold text-rose-gold">₹150 / finger</span>
+                        </div>
+                        <p class="text-xs text-muted mt-3 leading-relaxed font-light">
+                            Individual encapsulated foils, ombré airbrushing, hand-drawn fine lines, Korean jelly gems, and metallic chrome line accents.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4 text-[10px] text-muted">
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">Custom Add-on</span>
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">Hand Painted</span>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('Nail Art Add-on')" class="mt-6 w-full py-2.5 rounded-lg border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-white text-[11px] tracking-widest uppercase transition-all">
+                        Book Treatment
+                    </button>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-nude-50 p-7 rounded-2xl border border-nude-200 flex flex-col justify-between hover:border-rose-goldLight transition-all group">
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-nude-200 pb-3">
+                            <h3 class="font-serif text-xl text-charcoal font-medium group-hover:text-rose-gold transition-colors">Safe Removal & Nail Care</h3>
+                            <span class="text-sm font-semibold text-rose-gold">₹700</span>
+                        </div>
+                        <p class="text-xs text-muted mt-3 leading-relaxed font-light">
+                            E-file debulking and gentle soak-off ensuring full preservation of the natural keratin layers, completed with intensive keratin serum treatment.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4 text-[10px] text-muted">
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">45 mins</span>
+                            <span class="bg-white px-2 py-0.5 rounded border border-nude-200">Keratin Infused</span>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('Safe Removal & Care')" class="mt-6 w-full py-2.5 rounded-lg border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-white text-[11px] tracking-widest uppercase transition-all">
+                        Book Treatment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Portfolio Gallery -->
+    <section id="gallery" class="py-20 bg-nude-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-[11px] tracking-[0.3em] uppercase text-rose-gold font-medium">Curated Gallery</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-charcoal font-light mt-1">Our Recent Studio Artistry</h2>
+                </div>
+                <!-- Gallery Filter Buttons -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="galleryFilter">
+                    <button onclick="filterGallery('all')" class="gallery-btn active px-4 py-1.5 rounded-full text-xs uppercase tracking-wider bg-charcoal text-white transition-all">All Sets</button>
+                    <button onclick="filterGallery('bridal')" class="gallery-btn px-4 py-1.5 rounded-full text-xs uppercase tracking-wider bg-white text-muted hover:text-charcoal border border-nude-200 transition-all">Bridal</button>
+                    <button onclick="filterGallery('chrome')" class="gallery-btn px-4 py-1.5 rounded-full text-xs uppercase tracking-wider bg-white text-muted hover:text-charcoal border border-nude-200 transition-all">Chrome & Minimal</button>
+                    <button onclick="filterGallery('french')" class="gallery-btn px-4 py-1.5 rounded-full text-xs uppercase tracking-wider bg-white text-muted hover:text-charcoal border border-nude-200 transition-all">Sculpted French</button>
+                </div>
+            </div>
+
+            <!-- Gallery Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="galleryGrid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item bridal relative rounded-xl overflow-hidden aspect-square group shadow-sm bg-nude-200 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=900&auto=format&fit=crop', 'Bridal Rose French Set')">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=900&auto=format&fit=crop" alt="Bridal Nail Design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end text-white">
+                        <span class="text-[10px] tracking-widest uppercase text-rose-goldLight">Bridal</span>
+                        <p class="font-serif text-sm">Rose Quartz & Gold Foil</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item chrome relative rounded-xl overflow-hidden aspect-square group shadow-sm bg-nude-200 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=900&auto=format&fit=crop', 'Glazed Vanilla Chrome')">
+                    <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=900&auto=format&fit=crop" alt="Chrome Nail Design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end text-white">
+                        <span class="text-[10px] tracking-widest uppercase text-rose-goldLight">Chrome & Minimal</span>
+                        <p class="font-serif text-sm">Glazed Vanilla Chrome</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item french relative rounded-xl overflow-hidden aspect-square group shadow-sm bg-nude-200 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=900&auto=format&fit=crop', 'Deep Almond French Sculpt')">
+                    <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=900&auto=format&fit=crop" alt="Sculpted French Design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end text-white">
+                        <span class="text-[10px] tracking-widest uppercase text-rose-goldLight">Sculpted French</span>
+                        <p class="font-serif text-sm">Deep Almond French</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item bridal relative rounded-xl overflow-hidden aspect-square group shadow-sm bg-nude-200 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=900&auto=format&fit=crop', 'Swarovski Crystal Accents')">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=900&auto=format&fit=crop" alt="Bridal Crystals" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end text-white">
+                        <span class="text-[10px] tracking-widest uppercase text-rose-goldLight">Bridal</span>
+                        <p class="font-serif text-sm">Swarovski Starlight</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-center text-xs text-muted mt-6 font-light">
+                Tap on any photo to inspect high-resolution details.
+            </p>
+        </div>
+    </section>
+
+    <!-- Academy & Masterclasses Section -->
+    <section id="academy" class="py-20 bg-charcoal text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-rose-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Info Column -->
+                <div class="space-y-6">
+                    <span class="inline-block text-[11px] tracking-[0.3em] uppercase text-rose-goldLight font-medium">Academy & Masterclasses</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-light leading-tight">
+                        Launch Your Career as an <br/>
+                        <span class="italic text-rose-goldLight">Elite Certified Nail Technician</span>
+                    </h2>
+                    <p class="text-nude-300 text-sm leading-relaxed font-light">
+                        Step-by-step practical masterclasses designed for aspiring nail stylists. Master European dry manicuring, precision e-filing, gel chemistry, and salon business management under 1-on-1 mentorship.
+                    </p>
+
+                    <!-- Curriculum Checklist -->
+                    <div class="space-y-3 pt-2 text-xs text-nude-200">
+                        <div class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-rose-gold/20 flex items-center justify-center text-rose-goldLight text-[10px]"><i class="fa-solid fa-check"></i></span>
+                            <span>Comprehensive Anatomy, Nail Bed Prep & E-File Safety</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-rose-gold/20 flex items-center justify-center text-rose-goldLight text-[10px]"><i class="fa-solid fa-check"></i></span>
+                            <span>Dual Forms, Hard Gel Sculpting & Flawless Apex Building</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-rose-gold/20 flex items-center justify-center text-rose-goldLight text-[10px]"><i class="fa-solid fa-check"></i></span>
+                            <span>3D Bridal Nail Art, Airbrush Ombré & Chrome Master techniques</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-rose-gold/20 flex items-center justify-center text-rose-goldLight text-[10px]"><i class="fa-solid fa-check"></i></span>
+                            <span>Professional Starter Kit & Government-Recognized Certification</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                        <button onclick="openBookingModal('Academy Prospectus Inquiry')" class="px-6 py-3 rounded-full bg-rose-gold text-white hover:bg-rose-goldDark text-xs tracking-widest uppercase transition-all shadow-md">
+                            Inquire for Next Batch
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Cards -->
+                <div class="space-y-4">
+                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-rose-gold/50 transition-all">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] tracking-widest text-rose-goldLight uppercase">7-Day Intensive</span>
+                                <h3 class="font-serif text-2xl text-white mt-1">Foundation to Advanced Nail Masterclass</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-nude-200">Hands-on</span>
+                        </div>
+                        <p class="text-xs text-nude-300 mt-3 font-light leading-relaxed">
+                            Ideal for beginners. Covers gel overlays, polygel sculpting, dry manicures, French tips, and portfolio shoot styling. Includes student practice kit.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-rose-gold/50 transition-all">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] tracking-widest text-rose-goldLight uppercase">2-Day Masterclass</span>
+                                <h3 class="font-serif text-2xl text-white mt-1">Russian Manicure & Apex Perfection</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-nude-200">Intermediate</span>
+                        </div>
+                        <p class="text-xs text-nude-300 mt-3 font-light leading-relaxed">
+                            Focuses solely on clean e-file cuticle trimming, deep color tucking under cuticles, and structural alignment for zero lifting.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section id="reviews" class="py-20 bg-nude-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-14">
+                <span class="text-[11px] tracking-[0.3em] uppercase text-rose-gold font-medium">Verified Experiences</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-charcoal font-light mt-1">What Our Clients Say</h2>
+                <div class="flex items-center justify-center gap-1 text-amber-500 text-xs mt-3">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-charcoal text-xs ml-2 font-medium">4.9 / 5 on Google</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="p-6 rounded-2xl bg-white border border-nude-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-500 text-xs mb-3">
+                            ★★★★★
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed italic">
+                            "Got my bridal nails done here and they stayed intact for more than 4 weeks through all my wedding rituals. The precision on the cuticle work is unmatchable!"
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-nude-100 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-nude-200 flex items-center justify-center font-serif text-xs text-charcoal">P</div>
+                        <div>
+                            <p class="text-xs font-semibold text-charcoal">Pooja S.</p>
+                            <p class="text-[10px] text-muted">Bridal Nail Suite Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="p-6 rounded-2xl bg-white border border-nude-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-500 text-xs mb-3">
+                            ★★★★★
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed italic">
+                            "The cleanest studio I've visited. They sanitize and unpack every tool in front of you. Loved the glazed chrome finish, will definitely be a regular!"
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-nude-100 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-nude-200 flex items-center justify-center font-serif text-xs text-charcoal">S</div>
+                        <div>
+                            <p class="text-xs font-semibold text-charcoal">Sneha M.</p>
+                            <p class="text-[10px] text-muted">Chrome Manicure Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="p-6 rounded-2xl bg-white border border-nude-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-500 text-xs mb-3">
+                            ★★★★★
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed italic">
+                            "Enrolled in the 7-day intensive nail academy masterclass. The practical guidance on e-filing and gel structures gave me the confidence to take my own clients!"
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-nude-100 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-nude-200 flex items-center justify-center font-serif text-xs text-charcoal">A</div>
+                        <div>
+                            <p class="text-xs font-semibold text-charcoal">Anjali R.</p>
+                            <p class="text-[10px] text-muted">Academy Graduate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Footer -->
+    <footer id="contact" class="bg-charcoal text-nude-200 pt-16 pb-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                <!-- Col 1 -->
+                <div class="space-y-4 md:col-span-1">
+                    <span class="font-serif text-2xl tracking-[0.2em] font-light uppercase text-white">Atelier Nails</span>
+                    <p class="text-xs text-nude-300 font-light leading-relaxed">
+                        A private boutique studio and training space dedicated to the art of luxury manicures and nail health.
+                    </p>
+                    <div class="flex gap-4 text-sm text-nude-200">
+                        <a href="#" class="hover:text-rose-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-rose-gold transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="hover:text-rose-gold transition-colors"><i class="fa-regular fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Studio Hours -->
+                <div class="space-y-3">
+                    <h4 class="text-xs tracking-widest uppercase text-white font-semibold">Studio Hours</h4>
+                    <p class="text-xs text-nude-300 font-light">Monday – Saturday</p>
+                    <p class="text-xs text-white">10:30 AM – 8:00 PM</p>
+                    <p class="text-xs text-nude-300 font-light mt-2">Sunday</p>
+                    <p class="text-xs text-white">By Prior Appointment Only</p>
+                </div>
+
+                <!-- Col 3: Address & Appointments -->
+                <div class="space-y-3">
+                    <h4 class="text-xs tracking-widest uppercase text-white font-semibold">Studio Location</h4>
+                    <p class="text-xs text-nude-300 font-light leading-relaxed">
+                        Boutique Studio Suites,<br>
+                        Station Road & Central Promenade,<br>
+                        Mumbai, Maharashtra.
+                    </p>
+                    <p class="text-xs text-rose-goldLight pt-1">
+                        <i class="fa-solid fa-phone text-[10px] mr-1"></i> +91 98765 43210
+                    </p>
+                </div>
+
+                <!-- Col 4: Quick Action -->
+                <div class="space-y-3">
+                    <h4 class="text-xs tracking-widest uppercase text-white font-semibold">Quick Booking</h4>
+                    <p class="text-xs text-nude-300 font-light">Direct appointment confirmation via WhatsApp.</p>
+                    <button onclick="openBookingModal('Studio Visit')" class="w-full py-2.5 rounded-full bg-rose-gold hover:bg-rose-goldDark text-white text-xs tracking-widest uppercase transition-all">
+                        Chat On WhatsApp
+                    </button>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-nude-400">
+                <p>© 2026 Atelier Nails & Academy. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0 text-[10px] text-nude-400">Sample Demonstration Layout — Ready for Client Personalization</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Appointment / Inquiry Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-charcoal/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-nude-200">
+            <!-- Close Button -->
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-muted hover:text-charcoal p-2 text-sm">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-[10px] tracking-widest uppercase text-rose-gold font-medium">Online Reservation</span>
+                <h3 class="font-serif text-2xl text-charcoal mt-1">Book Studio Appointment</h3>
+                <p class="text-xs text-muted mt-1">Fill out the details below to route directly to WhatsApp.</p>
+            </div>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-muted mb-1">Your Full Name</label>
+                    <input type="text" id="clientName" required placeholder="e.g. Riya Sharma" class="w-full px-4 py-2.5 rounded-lg border border-nude-200 text-xs focus:outline-none focus:border-rose-gold">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-muted mb-1">Select Service or Course</label>
+                    <select id="serviceSelect" class="w-full px-4 py-2.5 rounded-lg border border-nude-200 text-xs focus:outline-none focus:border-rose-gold bg-white">
+                        <option value="Russian E-File Dry Manicure">Russian E-File Dry Manicure (₹1,200)</option>
+                        <option value="Sculpted Gel Extensions">Sculpted Gel Extensions (₹2,400)</option>
+                        <option value="Haute Bridal Nail Suite">Haute Bridal Nail Suite (₹3,800+)</option>
+                        <option value="Chrome & Glazed Finish">Chrome & Glazed Finish (₹1,800)</option>
+                        <option value="Safe Removal & Care">Safe Removal & Care (₹700)</option>
+                        <option value="Academy Masterclass Inquiry">Academy Masterclass Course Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-muted mb-1">Preferred Date</label>
+                        <input type="date" id="prefDate" required class="w-full px-3 py-2 rounded-lg border border-nude-200 text-xs focus:outline-none focus:border-rose-gold">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-muted mb-1">Preferred Time</label>
+                        <input type="time" id="prefTime" required class="w-full px-3 py-2 rounded-lg border border-nude-200 text-xs focus:outline-none focus:border-rose-gold">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs tracking-widest uppercase font-medium transition-all flex items-center justify-center gap-2 mt-2 shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    Send Booking via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Art Gallery -->
+    <div id="lightboxModal" class="fixed inset-0 bg-charcoal/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden" onclick="closeLightbox()">
+        <div class="max-w-xl w-full text-center relative" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white text-lg">
+                <i class="fa-solid fa-xmark"></i> Close
+            </button>
+            <img id="lightboxImg" src="" alt="Enlarged nail art preview" class="rounded-xl w-full max-h-[75vh] object-cover border border-white/20 shadow-2xl">
+            <p id="lightboxCaption" class="text-white font-serif text-lg mt-3"></p>
+        </div>
+    </div>
+
+    <!-- Floating Quick WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hi%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20nail%20session%20or%20academy%20course." target="_blank" class="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all text-xl" title="Chat with Studio on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Client-side Logic Script -->
+    <script>
+        // Mobile Drawer Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        // Booking Modal Triggers
+        function openBookingModal(serviceName = '') {
+            const modal = document.getElementById('bookingModal');
+            const select = document.getElementById('serviceSelect');
+            if (serviceName) {
+                for (let option of select.options) {
+                    if (option.value.toLowerCase().includes(serviceName.toLowerCase()) || serviceName.toLowerCase().includes(option.value.toLowerCase())) {
+                        option.selected = true;
+                        break;
+                    }
+                }
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        // WhatsApp Submission Dispatcher
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const service = document.getElementById('serviceSelect').value;
+            const date = document.getElementById('prefDate').value;
+            const time = document.getElementById('prefTime').value;
+
+            // Pre-composed friendly WhatsApp message
+            const message = `Hello! I would like to schedule an appointment:%0A%0A*Name:* ${name}%0A*Service:* ${service}%0A*Date:* ${date}%0A*Preferred Slot:* ${time}%0A%0APlease let me know if this slot is available.`;
+            
+            // Replaces placeholder with studio WhatsApp number
+            window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+            closeBookingModal();
+        }
+
+        // Gallery Filter Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-charcoal', 'text-white');
+                btn.classList.add('bg-white', 'text-muted');
+            });
+            event.target.classList.remove('bg-white', 'text-muted');
+            event.target.classList.add('bg-charcoal', 'text-white');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox Functions
+        function openLightbox(src, caption) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCaption').innerText = caption;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
+
